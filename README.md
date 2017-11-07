@@ -1,7 +1,7 @@
 # clustershell-project
 
 
-We need to add our superhost to the known hosts to all nodes using ssh to connect without requiring a password
+We need to add our superhost to the known hosts of all nodes using ssh to connect without requiring a password
 
 Edit /etc/clustershell/groups to add a group (nodeset) in the following manner :
 
