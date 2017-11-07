@@ -16,8 +16,11 @@ class ClusterCommander:
 	def execute_command(self,cmd):
 		task = task_self()
 		task.run(cmd, nodes=self.nodes)
+		r = ""
 		for buf, nodes in task.iter_buffers():
-			print nodes, buf
+			r += str(nodes) + " " +  str(buf) + "\n"
+		return r
+		
 
 	def status_services(self):
 		cmd = "service --status-all"
@@ -25,22 +28,31 @@ class ClusterCommander:
 		for s in self.services:
 			services_str += " -e " + s
 		greping = "grep " + services_str 
-		self.execute_command(cmd + " | " + greping)
+		return self.execute_command(cmd + " | " + greping)
 
 	def take_action_service(self, s, a):
 		cmd = "service " + s + " " + a
-		self.execute_command(cmd)
+		return self.execute_command(cmd)
 	
 	def start_service(self, s):
-		self.take_action_service(s,"start")
+		return self.take_action_service(s,"start")
 	
 	def restart_service(self, s):
-		self.take_action_service(s,"restart")
+		return self.take_action_service(s,"restart")
 	
 	def stop_service(self, s):
-		self.take_action_service(s,"stop")
+		return self.take_action_service(s,"stop")
+
+	def get_service_status(self, s):
+		task = task_self()
+		cmd = "service " + s + " status | grep Active"
+		task.run(cmd, nodes=self.nodes)
+		r = ""
+		for buf, nodes in task.iter_buffers():
+			r += str(nodes) + " " +  str(buf) + "\n"
+		return r
 
 obj = ClusterCommander()
-obj.status_services()
+print(obj.get_service_status("ntp"))
 
 
