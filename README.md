@@ -15,7 +15,7 @@ clush -w @node_all "the command"
 	- Start ssh in all VMs
 	- Configure the machines to connect automatically without password in the following manner :
 		- In the server (admin of the cluster)
-		```{r, engine='bash', count_lines}
+		```bash
 		ssh-keygen -t rsa #run this command only once
 		ssh [IP] mkdir -p .ssh  #run this command for every VM
 		cat .ssh/id_rsa.pub | ssh [IP] 'cat >> .ssh/authorized_keys' #run this command for every VM
