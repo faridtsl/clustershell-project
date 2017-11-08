@@ -41,6 +41,7 @@ clush -w @node_all "echo hi"
 ```
 ├── Metaservices Handling
 │   └── List Metaservices
+│       ├── List Metaservices
 │       ├── Show Metaservice Details
 │       ├── Show Detailed Status
 │       └── Show Status
