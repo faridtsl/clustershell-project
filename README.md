@@ -11,15 +11,30 @@ to execute a command from the commandline :
 clush -w @node_all "the command"
 
 ## Important tasks
-	- Run multiple VMs
-	- Start ssh in all VMs
-	- Configure the machines to connect automatically without password in the following manner :
-		- In the server (admin of the cluster)
-		```bash
-		ssh-keygen -t rsa #run this command only once
-		ssh [IP] mkdir -p .ssh  #run this command for every VM
-		cat .ssh/id_rsa.pub | ssh [IP] 'cat >> .ssh/authorized_keys' #run this command for every VM
-		```
+- Run multiple VMs
+- Start ssh in all VMs
+- Configure the machines to connect automatically without password in the following manner :
+	- **In the server (admin of the cluster)**
+```bash
+ssh-keygen -t rsa #run this command only once
+ssh [IP] mkdir -p .ssh  #run this command for every VM
+cat .ssh/id_rsa.pub | ssh [IP] 'cat >> .ssh/authorized_keys' #run this command for every VM
+```
+
+- Add the follow lines to the hosts file : ` /etc/hosts ` 
+	- ip hostname;for every VM
+		Exp :
+			192.168.1.1 test1
+			192.168.1.2 test2 
+- Edit the file ` /etc/clustershell/groups `:
+	- name_of_the_group : hostname1, hostname2
+		Exp :
+			node_all :  test1, test2
+
+- To test your appliance run :
+```bash
+clush -w @node_all "echo hi"
+```
 
 ### TODO 
 - <del>learn about usefull commands for services</del>
@@ -28,3 +43,5 @@ clush -w @node_all "the command"
 - add node from our program
 - <del>use the hosts file to give up IPs</del>
 - add colors
+
+
