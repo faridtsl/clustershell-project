@@ -2,6 +2,7 @@ from DistServiceHandler import DistServiceHandler
 from MetaServiceHandler import MetaServiceHandler
 import MetaServicesCfg as config
 from const import *
+import subprocess as sp
 
 
 class ClusterHandlingMenu:
@@ -14,6 +15,7 @@ class ClusterHandlingMenu:
 		self.services = [x.strip() for x in self.services]
 		self.serviceHandler = DistServiceHandler()
 		self.nodes = self.serviceHandler.nodes
+		self.metaHandler = MetaServiceHandler()
 
 	
 	#### Metaservices Menu
@@ -43,17 +45,23 @@ class ClusterHandlingMenu:
 	def show_metaservices_details_submenu(self):
 		self.print_metaservices()
 		s = self.get_service()
-		print "got : " + str(s)
+		if s == None:
+			return 0
+		print self.metaHandler.config[s]
 	
 	def show_detailed_status_submenu(self):
 		self.print_metaservices()
 		s = self.get_service()
-		print "got : " + str(s)
+		if s == None:
+			return 0
+		print self.metaHandler.status_meta_details(s)
 
 	def show_status_submenu(self):
 		self.print_metaservices()
 		s = self.get_service()
-		print "got : " + str(s)
+		if s == None:
+			return 0
+		print self.metaHandler.status_meta(s)
 		
 	def list_metaservice_menu(self):
 		print "1- List Metaservices"
@@ -197,11 +205,14 @@ class ClusterHandlingMenu:
 		print "2- Metaservice Handling"
 		print "3- Exit"
 		i = raw_input("Your choice [1-3] : ")
+		tmp = sp.call('clear',shell=True)
 		if i == "1":
 			while self.list_simple_service_handling() == 1:
+				tmp = sp.call('clear',shell=True)
 				pass
 		elif i == "2":
 			while self.list_metaservice_menu() == 1:
+				tmp = sp.call('clear',shell=True)
 				pass
 		elif i == "3":
 			return 0
@@ -211,4 +222,5 @@ class ClusterHandlingMenu:
 
 obj = ClusterHandlingMenu()
 while obj.general_menu() == 1:
+	tmp = sp.call('clear',shell=True)
 	pass
