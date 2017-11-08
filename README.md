@@ -38,6 +38,7 @@ clush -w @node_all "echo hi"
 
 ## Interface architecture
 
+```
 ├── Metaservices Handling
 │   └── List Metaservices
 │       ├── Show Metaservice Details
@@ -54,7 +55,7 @@ clush -w @node_all "echo hi"
         ├── Restart
         ├── Stop
         └── Status
-
+```
 
 ### TODO 
 - <del>learn about usefull commands for services</del>
