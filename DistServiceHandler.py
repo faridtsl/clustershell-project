@@ -14,7 +14,10 @@ class DistServiceHandler:
 		self.services = [x.strip() for x in self.services]
 		if services != None:
 			self.services = services
-
+	
+	def set_services(self, services):
+		self.services = services
+	
 	def execute_command(self,cmd):
 		task = task_self()
 		task.run(cmd, nodes=self.nodes)
