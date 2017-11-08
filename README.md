@@ -15,5 +15,5 @@ clush -w @node_all "the command"
 - <del>learn the pythonic way to interact with clustershell</del>
 - add an HMI
 - add node from our program
-- Done : ~~ use the hosts file to give up IPs</del>
+- ~~ use the hosts file to give up IPs ~~
 - add colors
