@@ -11,9 +11,9 @@ to execute a command from the commandline :
 clush -w @node_all "the command"
 
 ### TODO 
-	~~- learn about usefull commands for services~~
-	~~- learn the pythonic way to interact with clustershell~~
+	- <del>learn about usefull commands for services</del>
+	- <del>learn the pythonic way to interact with clustershell</del>
 	- add an HMI
 	- add node from our program
-	~~- use the hosts file to give up IPs~~
+	- <del>use the hosts file to give up IPs</del>
 	- add colors
