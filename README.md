@@ -36,6 +36,26 @@ cat .ssh/id_rsa.pub | ssh [IP] 'cat >> .ssh/authorized_keys' #run this command f
 clush -w @node_all "echo hi"
 ```
 
+## Interface architecture
+
+├── Metaservices Handling
+│   └── List Metaservices
+│       ├── Show Metaservice Details
+│       ├── Show Detailed Status
+│       └── Show Status
+└── Simple Service Handling
+    ├── List Nodes
+    │   └── List
+    ├── List Services
+    │   ├── Add Service
+    │   └── Delete Service
+    └── Manage Services
+        ├── Start
+        ├── Restart
+        ├── Stop
+        └── Status
+
+
 ### TODO 
 - <del>learn about usefull commands for services</del>
 - <del>learn the pythonic way to interact with clustershell</del>

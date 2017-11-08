@@ -1,8 +1,6 @@
 from DistServiceHandler import DistServiceHandler
+from MetaServiceHandler import MetaServiceHandler
 
 
-obj = DistServiceHandler('test1')
-# print(obj.get_service_status("ntp"))
-print obj.status_services()
 
 
