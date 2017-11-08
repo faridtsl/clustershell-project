@@ -23,12 +23,12 @@ cat .ssh/id_rsa.pub | ssh [IP] 'cat >> .ssh/authorized_keys' #run this command f
 
 - Add the follow lines to the hosts file : ` /etc/hosts ` 
 	- ip hostname;for every VM
-		Exp :
+		#####Exp :
 			192.168.1.1 test1
 			192.168.1.2 test2 
 - Edit the file ` /etc/clustershell/groups `:
 	- name_of_the_group : hostname1, hostname2
-		Exp :
+		#####Exp :
 			node_all :  test1, test2
 
 - To test your appliance run :
