@@ -7,7 +7,7 @@ Edit /etc/clustershell/groups to add a group (nodeset) in the following manner :
 
 name_of_the_group : IP1, IP2, IP3
 
-to execute a command from the commandline :
+~~to execute a command from the commandline :~~
 clush -w @node_all "the command"
 
 ### TODO 
