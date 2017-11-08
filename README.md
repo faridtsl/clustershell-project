@@ -61,7 +61,7 @@ clush -w @node_all "echo hi"
 ### TODO 
 - <del>learn about usefull commands for services</del>
 - <del>learn the pythonic way to interact with clustershell</del>
-- add an HMI
+- <del> add an HMI </del>
 - add node from our program
 - <del>use the hosts file to give up IPs</del>
 - add colors
