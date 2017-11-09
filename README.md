@@ -65,5 +65,5 @@ clush -w @node_all "echo hi"
 - add node from our program
 - <del>use the hosts file to give up IPs</del>
 - add colors
-
+- add dependancy management
 
