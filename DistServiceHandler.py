@@ -26,7 +26,7 @@ class DistServiceHandler:
 			r += repr(nodes) + " " +  str(buf) + "\n"
 		return r
 
-	def status_services(self):
+	def status_all(self):
 		cmd = "service --status-all"
 		services_str = ""
 		for s in self.services:
@@ -49,11 +49,30 @@ class DistServiceHandler:
 
 	def get_service_status(self, s):
 		task = task_self()
-		cmd = "service " + s + " status |& grep Active"
+		cmd = "service " + s + " status "
+		#cmd = cmd + "|& grep Active"
 		task.run(cmd, nodes=self.nodes)
 		r = ""
 		for buf, nodes in task.iter_buffers():
 			r += str(nodes) + " " +  str(buf) + "\n"
+		return r
+	
+	def start_all(self):
+		r = ""
+		for s in self.services:
+			r += self.start_service(s)
+		return r
+
+	def restart_all(self):
+		r = ""
+		for s in self.services:
+			r += self.restart_service(s)
+		return r
+
+	def stop_all(self):
+	 	r = ""
+		for s in self.services:
+			r += self.stop_service(s)
 		return r
 
 

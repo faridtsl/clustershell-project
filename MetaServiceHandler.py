@@ -38,7 +38,7 @@ class MetaServiceHandler:
 		r = ""
 		for n in nodes:
 			dsh = DistServiceHandler(nodes=n,services=self.config[name][n]['services'])
-			r += dsh.status_services()
+			r += dsh.status_all()
 		return r
 	
 	def status_meta(self,name):

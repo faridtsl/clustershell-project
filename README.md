@@ -5,7 +5,7 @@ We need to add our superhost to the known hosts of all nodes using ssh to connec
 
 Edit /etc/clustershell/groups to add a group (nodeset) in the following manner :
 
-name_of_the_group : IP1, IP2, IP3
+name_of_the_group: IP1, IP2, IP3
 
 to execute a command from the commandline :
 clush -w @node_all "the command"
@@ -27,9 +27,9 @@ cat .ssh/id_rsa.pub | ssh [IP] 'cat >> .ssh/authorized_keys' #run this command f
 	192.168.1.1 test1
 	192.168.1.2 test2 
 - Edit the file ` /etc/clustershell/groups `:
-	- name_of_the_group : hostname1, hostname2
+	- name_of_the_group: hostname1, hostname2
 #### Exp :
-	node_all :  test1, test2
+	node_all:  test1, test2
 
 - To test your appliance run :
 ```bash

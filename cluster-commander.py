@@ -48,6 +48,22 @@ class ClusterHandlingMenu:
 		if s == None:
 			return 0
 		print self.metaHandler.config[s]
+		print "1- Start"
+		print "2- Restart"
+		print "3- Stop"
+		print "4- Back"
+		i = raw_input("Your choice [1-4] : ")
+		if i == "1":
+			print self.metaHandler.start_meta(s)
+		elif i == "2":
+			print self.metaHandler.restart_meta(s)
+		elif i == "3":
+			print self.metaHandler.stop_meta(s)
+		elif i == "4":
+			return 0
+		else:
+			print "Please choose a valid option"
+		return 1
 	
 	def show_detailed_status_submenu(self):
 		self.print_metaservices()
@@ -65,7 +81,7 @@ class ClusterHandlingMenu:
 		
 	def list_metaservice_menu(self):
 		print "1- List Metaservices"
-		print "2- Show Metaservices Details"
+		print "2- Show Metaservices Details (Start|Restart|Stop)"
 		print "3- Show Detailed Status"
 		print "4- Show Status"
 		print "5- Back"
@@ -120,9 +136,9 @@ class ClusterHandlingMenu:
 		try:
 			idx = int(i)
 			if idx < 1 or idx > len(l):
-				print "Please enter a valid index"
 				if can_all and idx == (len(l) + 1):
 					return "all"
+				print "Please enter a valid index"
 				return None
 			else:
 				s = l[idx-1]
@@ -149,13 +165,31 @@ class ClusterHandlingMenu:
 		print "5- Back"
 		i = raw_input("Your Choice [1-5] : ")
 		if i == "1":
-			print "Starting..."
+			print "Starting ..."
+			try :
+				print self.serviceHandler.start_all()
+			except:
+				print "[-] Failed"
+				return -1
+			print "[+] Success" 
 		elif i == "2":
-			print "Restarting..."
+			print "Restarting ..."
+			try :
+				print self.serviceHandler.restart_all()
+			except:
+				print "[-] Failed"
+				return -1
+			print "[+] Success" 
 		elif i == "3":
-			print "Stoping..."
+			print "Stopping ..."
+			try :
+				print self.serviceHandler.stop_all()
+			except:
+				print "[-] Failed"
+				return -1
+			print "[+] Success" 
 		elif i == "4":
-			print "Statuing..."
+			print self.serviceHandler.status_all()
 		elif i == "5":
 			return 0
 		else:
@@ -208,11 +242,11 @@ class ClusterHandlingMenu:
 		tmp = sp.call('clear',shell=True)
 		if i == "1":
 			while self.list_simple_service_handling() == 1:
-				tmp = sp.call('clear',shell=True)
+				#tmp = sp.call('clear',shell=True)
 				pass
 		elif i == "2":
 			while self.list_metaservice_menu() == 1:
-				tmp = sp.call('clear',shell=True)
+				#tmp = sp.call('clear',shell=True)
 				pass
 		elif i == "3":
 			return 0
