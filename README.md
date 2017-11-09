@@ -10,7 +10,7 @@ name_of_the_group: IP1, IP2, IP3
 to execute a command from the commandline :
 clush -w @node_all "the command"
 
-## Important tasks
+## Setting up the project
 - Run multiple VMs
 - Start ssh in all VMs
 - Configure the machines to connect automatically without password in the following manner :
